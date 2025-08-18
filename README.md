@@ -16,9 +16,8 @@ A Python-based steganographic tool that hides secret messages inside images usin
 - **Python 3**
 - **Pillow** for image manipulation
 - **NumPy** for pixel-level operations
-- **Argparse** for command-line interface
 - Optional: **Cryptography** for message encryption
-
+ 
 ## 📦 Installation
 
 ```bash
