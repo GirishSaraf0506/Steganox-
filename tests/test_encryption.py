@@ -1,7 +1,6 @@
 """Tests for AES-256-GCM encryption/decryption."""
 
 import pytest
-from cryptography.exceptions import InvalidTag
 
 from steganox.core.encryption import decrypt_message, encrypt_message
 
