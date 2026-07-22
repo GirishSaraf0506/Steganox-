@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Steganox - Dashboard{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('embed')">Embed Message</button>
+        <button class="tab-button" onclick="switchTab('extract')">Extract Message</button>
+    </div>
+
+    <div id="embed" class="tab-content active">
+        <h2>Hide a Secret Message</h2>
+        <form id="embedForm" enctype="multipart/form-data">
+            <label>Carrier Image</label>
+            <input type="file" name="image" accept=".png,.bmp,.jpg,.jpeg" required>
+
+            <label>Secret Message</label>
+            <textarea name="message" rows="5" placeholder="Enter your secret message..." required></textarea>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Strong password (12+ chars)" required>
+
+            <button type="submit">🔐 Embed & Download</button>
+        </form>
+        <div id="embedStatus" class="status"></div>
+    </div>
+
+    <div id="extract" class="tab-content">
+        <h2>Extract a Hidden Message</h2>
+        <form id="extractForm" enctype="multipart/form-data">
+            <label>Stego Image</label>
+            <input type="file" name="image" accept=".png,.bmp,.jpg,.jpeg" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+
+            <button type="submit">🔓 Extract Message</button>
+        </form>
+        <div id="extractStatus" class="status"></div>
+        <div id="extractResult" class="result-box" style="display:none;">
+            <label>Extracted Message:</label>
+            <textarea id="resultText" rows="6" readonly></textarea>
+        </div>
+    </div>
+</div>
+{% endblock %}
