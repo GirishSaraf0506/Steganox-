@@ -51,14 +51,18 @@ def cmd_extract(args):
 def main():
     parser = argparse.ArgumentParser(
         prog="steganox",
-        description="🔐 Steganox — LSB Steganography + AES-256 Encryption"
+        description="🔐 Steganox — LSB Steganography + AES-256 Encryption",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
     embed_p = sub.add_parser("embed", help="Hide a message in an image")
     embed_p.add_argument("-i", "--input", required=True, help="Carrier image path")
-    embed_p.add_argument("-o", "--output", required=True, help="Output stego-image path")
-    embed_p.add_argument("-m", "--message", required=True, help="Secret message to hide")
+    embed_p.add_argument(
+        "-o", "--output", required=True, help="Output stego-image path"
+    )
+    embed_p.add_argument(
+        "-m", "--message", required=True, help="Secret message to hide"
+    )
     embed_p.set_defaults(func=cmd_embed)
 
     extract_p = sub.add_parser("extract", help="Extract a hidden message from an image")

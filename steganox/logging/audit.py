@@ -3,19 +3,19 @@ Audit logging with tamper-evident hash chaining.
 Each log entry includes a SHA-256 hash of the previous entry.
 """
 
-import json
 import hashlib
+import json
 import os
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
-from dataclasses import dataclass, asdict
 
 
 @dataclass
 class AuditEntry:
     timestamp: str
-    action: str          # "embed" | "extract" | "failed"
+    action: str  # "embed" | "extract" | "failed"
     image_hash: str
-    status: str          # "success" | "failure"
+    status: str  # "success" | "failure"
     detail: str
     prev_hash: str
     entry_hash: str = ""
@@ -27,7 +27,7 @@ class AuditLogger:
         self._prev_hash = "0" * 64
 
         if os.path.exists(log_path):
-            with open(log_path, 'r') as f:
+            with open(log_path, "r") as f:
                 lines = [l.strip() for l in f if l.strip()]
             if lines:
                 last = json.loads(lines[-1])
@@ -42,12 +42,14 @@ class AuditLogger:
             detail=detail,
             prev_hash=self._prev_hash,
         )
-        raw = json.dumps({k: v for k, v in asdict(entry).items() if k != "entry_hash"},
-                         sort_keys=True)
+        raw = json.dumps(
+            {k: v for k, v in asdict(entry).items() if k != "entry_hash"},
+            sort_keys=True,
+        )
         entry.entry_hash = hashlib.sha256(raw.encode()).hexdigest()
         self._prev_hash = entry.entry_hash
 
-        with open(self.log_path, 'a') as f:
+        with open(self.log_path, "a") as f:
             f.write(json.dumps(asdict(entry)) + "\n")
 
     def verify_integrity(self) -> bool:
@@ -55,7 +57,7 @@ class AuditLogger:
         if not os.path.exists(self.log_path):
             return True
         prev = "0" * 64
-        with open(self.log_path, 'r') as f:
+        with open(self.log_path, "r") as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -65,7 +67,7 @@ class AuditLogger:
                     return False
                 raw = json.dumps(
                     {k: v for k, v in entry.items() if k != "entry_hash"},
-                    sort_keys=True
+                    sort_keys=True,
                 )
                 expected = hashlib.sha256(raw.encode()).hexdigest()
                 if entry.get("entry_hash") != expected:

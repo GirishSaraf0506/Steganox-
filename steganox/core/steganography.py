@@ -3,10 +3,11 @@ Core steganography engine for LSB embedding and extraction.
 """
 
 import struct
-from PIL import Image
-import numpy as np
 
-from steganox.core.encryption import encrypt_message, decrypt_message
+import numpy as np
+from PIL import Image
+
+from steganox.core.encryption import decrypt_message, encrypt_message
 
 
 class SteganoxEngine:
@@ -27,12 +28,12 @@ class SteganoxEngine:
         Raises:
             ValueError: If message is too large for the carrier image
         """
-        carrier = Image.open(image_path).convert('RGB')
+        carrier = Image.open(image_path).convert("RGB")
         carrier_array = np.array(carrier, dtype=np.uint8)
 
         payload = encrypt_message(message, password)
         # Prepend 4-byte length header so extraction knows when to stop
-        payload = struct.pack('>I', len(payload)) + payload
+        payload = struct.pack(">I", len(payload)) + payload
 
         payload_bits = self._bytes_to_bits(payload)
 
@@ -62,13 +63,13 @@ class SteganoxEngine:
         Raises:
             ValueError: If decryption fails (wrong password or no hidden message)
         """
-        stego = Image.open(image_path).convert('RGB')
+        stego = Image.open(image_path).convert("RGB")
         flat = np.array(stego, dtype=np.uint8).flatten()
         lsb_bits = (flat & 0x01).tolist()
 
         # Read 4-byte length header first (32 bits)
         header_bytes = self._bits_to_bytes(lsb_bits[:32])
-        payload_len = struct.unpack('>I', header_bytes)[0]
+        payload_len = struct.unpack(">I", header_bytes)[0]
 
         total_bits = 32 + payload_len * 8
         if total_bits > len(lsb_bits):
@@ -79,7 +80,9 @@ class SteganoxEngine:
         try:
             return decrypt_message(payload_bytes, password)
         except Exception as e:
-            raise ValueError(f"Decryption failed — wrong password or corrupted data: {e}")
+            raise ValueError(
+                f"Decryption failed — wrong password or corrupted data: {e}"
+            )
 
     @staticmethod
     def _bytes_to_bits(data: bytes) -> list:

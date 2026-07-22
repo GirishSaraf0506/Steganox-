@@ -1,7 +1,9 @@
 """Tests for image and password validation."""
 
 import pytest
-from steganox.core.validation import validate_password_strength, validate_message
+
+from steganox.core.validation import (validate_message,
+                                      validate_password_strength)
 
 
 def test_strong_password_passes():
@@ -10,7 +12,9 @@ def test_strong_password_passes():
     assert info["issues"] == []
 
 
-@pytest.mark.parametrize("pwd", ["short", "alllowercase1!", "ALLUPPERCASE1!", "NoSpecial123"])
+@pytest.mark.parametrize(
+    "pwd", ["short", "alllowercase1!", "ALLUPPERCASE1!", "NoSpecial123"]
+)
 def test_weak_passwords_fail(pwd):
     valid, _ = validate_password_strength(pwd)
     assert not valid

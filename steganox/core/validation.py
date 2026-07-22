@@ -1,8 +1,9 @@
 """Image and payload validation."""
 
-import os
 import math
+import os
 from typing import Tuple
+
 from PIL import Image
 
 
@@ -11,7 +12,7 @@ def validate_image(image_path: str) -> Tuple[bool, str]:
     try:
         img = Image.open(image_path)
 
-        if img.format not in ['PNG', 'BMP', 'JPEG']:
+        if img.format not in ["PNG", "BMP", "JPEG"]:
             return False, "Unsupported format. Use PNG, BMP, or JPEG."
 
         size_mb = os.path.getsize(image_path) / (1024 * 1024)
@@ -21,7 +22,7 @@ def validate_image(image_path: str) -> Tuple[bool, str]:
         if img.size[0] * img.size[1] > 16384 * 16384:
             return False, "Resolution too high (max 16384×16384)."
 
-        if img.mode not in ['RGB', 'RGBA', 'L']:
+        if img.mode not in ["RGB", "RGBA", "L"]:
             return False, "Image must be RGB, RGBA, or grayscale."
 
         return True, "Valid"

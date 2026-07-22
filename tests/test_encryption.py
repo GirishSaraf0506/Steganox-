@@ -2,7 +2,8 @@
 
 import pytest
 from cryptography.exceptions import InvalidTag
-from steganox.core.encryption import encrypt_message, decrypt_message
+
+from steganox.core.encryption import decrypt_message, encrypt_message
 
 
 def test_roundtrip():
