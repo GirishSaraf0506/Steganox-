@@ -28,7 +28,7 @@ class AuditLogger:
 
         if os.path.exists(log_path):
             with open(log_path, "r") as f:
-                lines = [l.strip() for l in f if l.strip()]
+                lines = [line.strip() for line in f if line.strip()]
             if lines:
                 last = json.loads(lines[-1])
                 self._prev_hash = last.get("entry_hash", "0" * 64)
