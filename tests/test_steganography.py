@@ -1,6 +1,7 @@
 """Tests for SteganoxEngine (LSB embed/extract)."""
 
 import pytest
+
 from steganox.core.steganography import SteganoxEngine
 
 

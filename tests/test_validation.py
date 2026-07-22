@@ -1,7 +1,8 @@
 """Tests for image and password validation."""
 
 import pytest
-from steganox.core.validation import validate_password_strength, validate_message
+
+from steganox.core.validation import validate_message, validate_password_strength
 
 
 def test_strong_password_passes():

@@ -51,7 +51,7 @@ def cmd_extract(args):
 def main():
     parser = argparse.ArgumentParser(
         prog="steganox",
-        description="🔐 Steganox — LSB Steganography + AES-256 Encryption"
+        description="🔐 Steganox — LSB Steganography + AES-256 Encryption",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
