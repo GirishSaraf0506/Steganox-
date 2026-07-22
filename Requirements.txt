@@ -1,11 +1,7 @@
-from tkinter import filedialog, simpledialog, messagebox, Tk, Label, PhotoImage, Frame, GROOVE, Text, WORD, Scrollbar, Button, END, Toplevel
-from PIL import Image, ImageTk
-import os
-from stegano import lsb 
-import hashlib
-import numpy as np
-import webbrowser
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
+Pillow>=9.0
+numpy>=1.21
+cryptography>=41.0
+Flask>=2.3
+Werkzeug>=2.3
+pytest>=7.0
+pytest-cov>=4.0
