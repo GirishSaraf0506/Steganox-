@@ -2,6 +2,8 @@
 
 > **Enterprise-grade steganography platform** combining LSB steganography with AES encryption for covert data transmission and storage. Designed for cybersecurity professionals, penetration testers, and researchers.
 
+[![CI/CD](https://github.com/GirishSaraf0506/Steganox-/actions/workflows/ci-cd.yml/badge.svg?branch=dev-01)](https://github.com/GirishSaraf0506/Steganox-/actions/workflows/ci-cd.yml)
+
 A Python-based steganographic tool that hides secret messages inside images using **Least Significant Bit (LSB)** encoding combined with **AES-256 encryption**. This project demonstrates layered security principles—obfuscation + encryption—making it harder for attackers to detect and decrypt sensitive data.
 
 ---
@@ -78,10 +80,10 @@ Steganox combines multiple security layers:
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/steganox.git
-cd steganox
-pip install -r requirements.txt
-python steganox.py
+git clone https://github.com/GirishSaraf0506/Steganox-.git
+cd Steganox-
+py -3 -m pip install -r requirements.txt
+py -3 steganox.py
 ```
 
 ### Requirements
@@ -220,7 +222,9 @@ MIT License - See LICENSE file for details
 
 ## 👤 Author
 
-**Your Name** - Cybersecurity Engineer & Python Developer  
+**Girish Saraf** - Cybersecurity Engineer & Python Developer  
 *Passionate about applied cryptography, steganography, and secure system design.*
+
+[![CI/CD](https://github.com/GirishSaraf0506/Steganox-/actions/workflows/ci-cd.yml/badge.svg?branch=dev-01)](https://github.com/GirishSaraf0506/Steganox-/actions/workflows/ci-cd.yml)
 
 
