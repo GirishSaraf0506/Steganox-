@@ -32,13 +32,9 @@ class SteganoxApp(tk.Tk):
         self._build_extract_tab(extract_frame)
 
     def _build_embed_tab(self, parent):
-        ttk.Label(parent, text="Carrier Image:").grid(
-            row=0, column=0, sticky="w", padx=10, pady=8
-        )
+        ttk.Label(parent, text="Carrier Image:").grid(row=0, column=0, sticky="w", padx=10, pady=8)
         self.embed_image_var = tk.StringVar()
-        ttk.Entry(parent, textvariable=self.embed_image_var, width=45).grid(
-            row=0, column=1, padx=5
-        )
+        ttk.Entry(parent, textvariable=self.embed_image_var, width=45).grid(row=0, column=1, padx=5)
         ttk.Button(parent, text="Browse", command=self._browse_embed_image).grid(
             row=0, column=2, padx=5
         )
@@ -49,24 +45,18 @@ class SteganoxApp(tk.Tk):
         self.embed_message = tk.Text(parent, height=6, width=45)
         self.embed_message.grid(row=1, column=1, columnspan=2, padx=5, pady=5)
 
-        ttk.Label(parent, text="Password:").grid(
-            row=2, column=0, sticky="w", padx=10, pady=8
-        )
+        ttk.Label(parent, text="Password:").grid(row=2, column=0, sticky="w", padx=10, pady=8)
         self.embed_password_var = tk.StringVar()
-        ttk.Entry(
-            parent, textvariable=self.embed_password_var, show="*", width=45
-        ).grid(row=2, column=1, padx=5)
-
-        ttk.Label(parent, text="Output Path:").grid(
-            row=3, column=0, sticky="w", padx=10, pady=8
+        ttk.Entry(parent, textvariable=self.embed_password_var, show="*", width=45).grid(
+            row=2, column=1, padx=5
         )
+
+        ttk.Label(parent, text="Output Path:").grid(row=3, column=0, sticky="w", padx=10, pady=8)
         self.embed_output_var = tk.StringVar()
         ttk.Entry(parent, textvariable=self.embed_output_var, width=45).grid(
             row=3, column=1, padx=5
         )
-        ttk.Button(parent, text="Browse", command=self._browse_output).grid(
-            row=3, column=2, padx=5
-        )
+        ttk.Button(parent, text="Browse", command=self._browse_output).grid(row=3, column=2, padx=5)
 
         ttk.Button(parent, text="Embed Message", command=self._do_embed).grid(
             row=4, column=1, pady=15
@@ -76,9 +66,7 @@ class SteganoxApp(tk.Tk):
         self.embed_status.grid(row=5, column=0, columnspan=3, padx=10)
 
     def _build_extract_tab(self, parent):
-        ttk.Label(parent, text="Stego Image:").grid(
-            row=0, column=0, sticky="w", padx=10, pady=8
-        )
+        ttk.Label(parent, text="Stego Image:").grid(row=0, column=0, sticky="w", padx=10, pady=8)
         self.extract_image_var = tk.StringVar()
         ttk.Entry(parent, textvariable=self.extract_image_var, width=45).grid(
             row=0, column=1, padx=5
@@ -87,13 +75,11 @@ class SteganoxApp(tk.Tk):
             row=0, column=2, padx=5
         )
 
-        ttk.Label(parent, text="Password:").grid(
-            row=1, column=0, sticky="w", padx=10, pady=8
-        )
+        ttk.Label(parent, text="Password:").grid(row=1, column=0, sticky="w", padx=10, pady=8)
         self.extract_password_var = tk.StringVar()
-        ttk.Entry(
-            parent, textvariable=self.extract_password_var, show="*", width=45
-        ).grid(row=1, column=1, padx=5)
+        ttk.Entry(parent, textvariable=self.extract_password_var, show="*", width=45).grid(
+            row=1, column=1, padx=5
+        )
 
         ttk.Button(parent, text="Extract Message", command=self._do_extract).grid(
             row=2, column=1, pady=15
@@ -106,16 +92,12 @@ class SteganoxApp(tk.Tk):
         self.extract_result.grid(row=3, column=1, columnspan=2, padx=5, pady=5)
 
     def _browse_embed_image(self):
-        path = filedialog.askopenfilename(
-            filetypes=[("Images", "*.png *.bmp *.jpg *.jpeg")]
-        )
+        path = filedialog.askopenfilename(filetypes=[("Images", "*.png *.bmp *.jpg *.jpeg")])
         if path:
             self.embed_image_var.set(path)
 
     def _browse_extract_image(self):
-        path = filedialog.askopenfilename(
-            filetypes=[("Images", "*.png *.bmp *.jpg *.jpeg")]
-        )
+        path = filedialog.askopenfilename(filetypes=[("Images", "*.png *.bmp *.jpg *.jpeg")])
         if path:
             self.extract_image_var.set(path)
 

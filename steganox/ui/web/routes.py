@@ -44,9 +44,7 @@ def register_routes(app: Flask):
         try:
             result = engine.embed(input_path, message, password)
             result.save(output_path)
-            return send_file(
-                output_path, as_attachment=True, download_name=f"stego_{filename}"
-            )
+            return send_file(output_path, as_attachment=True, download_name=f"stego_{filename}")
         except ValueError as e:
             return jsonify({"error": str(e)}), 400
         except Exception as e:

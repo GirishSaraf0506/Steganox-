@@ -80,9 +80,7 @@ class SteganoxEngine:
         try:
             return decrypt_message(payload_bytes, password)
         except Exception as e:
-            raise ValueError(
-                f"Decryption failed — wrong password or corrupted data: {e}"
-            )
+            raise ValueError(f"Decryption failed — wrong password or corrupted data: {e}")
 
     @staticmethod
     def _bytes_to_bits(data: bytes) -> list:
