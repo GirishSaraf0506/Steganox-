@@ -1,0 +1,100 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 20px 40px;
+    border-bottom: 2px solid #00d4ff;
+    text-align: center;
+}
+
+header h1 { font-size: 2rem; color: #00d4ff; }
+header p  { color: #888; margin-top: 4px; }
+
+main { max-width: 700px; margin: 40px auto; padding: 0 20px; }
+
+.container { background: #1a1a2e; border-radius: 12px; padding: 30px; }
+
+.tabs { display: flex; gap: 10px; margin-bottom: 24px; }
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background: #16213e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.tab-button.active, .tab-button:hover {
+    background: #00d4ff;
+    color: #0f0f1a;
+    border-color: #00d4ff;
+    font-weight: 600;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+h2 { color: #00d4ff; margin-bottom: 20px; font-size: 1.2rem; }
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+input[type="file"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: #0f0f1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus { border-color: #00d4ff; }
+
+textarea { resize: vertical; }
+
+button[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #00d4ff;
+    color: #0f0f1a;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+button[type="submit"]:hover { opacity: 0.85; }
+
+.status { margin-top: 14px; font-size: 0.9rem; min-height: 20px; }
+.status.error { color: #ff4d4d; }
+.status.success { color: #4dff91; }
+
+.result-box { margin-top: 20px; }
+.result-box textarea {
+    background: #0a0a14;
+    border-color: #4dff91;
+    color: #4dff91;
+}
